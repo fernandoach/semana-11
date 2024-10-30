@@ -1,0 +1,55 @@
+*{
+  margin: 0;
+  padding: 0;
+  background-color: #020202;
+}
+
+h1 {
+  color: #ffffff;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+div h3 {
+  color:#ffffff
+}
+
+div h4 {
+  color: #ffffff;
+}
+
+div button{
+  color: white;
+  background-color: brown;
+  border-color: brown;
+}
+
+table {
+  border: 1px solid #fff;
+}
+
+table thead {
+  color: #ffffff;
+  border: 1px solid #fff;
+}
+
+thead tr {
+  border: 1px solid #fff;
+}
+
+tbody {
+  border: 1px solid #fff;
+}
+
+tbody tr {
+  border: 1px solid #fff;
+}
+
+tbody td{
+  border: #fff;
+  color: white;
+  text-align: center;
+}

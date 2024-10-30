@@ -3,18 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/index.css">
   <title>Document</title>
 </head>
 <body>
   <h1>Lista de productos</h1>
   <% data %>
   <div>
-    <% for(let i=0; i<data.length; i++) {%>
-      <li>
-        <h3><%= data[i].nombre%></h3>
-        <h4><%= data[i].stock%></h4>
-      </li>
-    <% } %>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i=0; i<data.length; i++) {%>
+          <tr>
+            <td><%= data[i].nombre%></td>
+            <td><%= data[i].descripcion%></td>
+            <td><%= data[i].precio%></td>
+            <td><%= data[i].stock%></td>
+            <td>
+              <button>Editar</button>
+              <button>Eliminar</button>
+            </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+    
+  </div>
+  <div>
+    <a href="/register">Crear nuevo registro</a>
   </div>
 </body>
 </html>

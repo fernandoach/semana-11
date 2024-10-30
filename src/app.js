@@ -18,6 +18,7 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.set('views', join(__dirname, 'views'))
 
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', async (req, res) => {
   try {
@@ -28,9 +29,13 @@ app.get('/', async (req, res) => {
   }
 })
 
-app.post('/', async (req, res) => {
+app.get('/register', (req, res)=>{
+  return res.render('register.ejs')
+})
+app.post('/register', async (req, res) => {
   try {
     const {nombre, precio, stock, descripcion} = req.body
+    console.log(req.query)
     const queryResult = await postProducts(nombre, precio, stock, descripcion)
     return res.json(queryResult)
   } catch (error) {
