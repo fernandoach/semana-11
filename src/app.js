@@ -6,6 +6,7 @@ import { putProducts } from './services/putProducts.js'
 import { deleteProduct } from './services/deleteProduct.js'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
+import { getProductById } from './services/getProductById.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -37,14 +38,21 @@ app.post('/register', async (req, res) => {
     const {nombre, precio, stock, descripcion} = req.body
     console.log(req.query)
     const queryResult = await postProducts(nombre, precio, stock, descripcion)
-    return res.json(queryResult)
+    return res.redirect('/')
   } catch (error) {
     console.log(error)
     return res.json(error)
   }
 })
 
-app.put('/:id', async (req, res) => {
+app.get('/edit/:id', async (req, res)=> {
+  const id = Number(req.params.id)
+  const product = await getProductById(id)
+console.log(product)
+  return res.render('edit.ejs', { product })
+})
+
+app.post('/edit/:id', async (req, res) => {
   try {
     const connection = await getConnection()
 
@@ -52,20 +60,20 @@ app.put('/:id', async (req, res) => {
     const { nombre, precio, stock, descripcion } = req.body 
     const queryResult = await putProducts(id, nombre, precio, stock, descripcion)
 
-    return res.json(queryResult)
+    return res.redirect('/')
   } catch (error) {
     console.log(error)
     return res.json(error)
   }
 })
 
-app.delete('/:id', async (request, response)=>{ 
+app.post('/delete/:id', async (request, response)=>{ 
   try {
     const id = Number(request.params.id)
 
     const queryResult = await deleteProduct(id)
 
-    return response.json(queryResult)
+    return response.redirect('/')
 
   } catch (error) {
     return response.json(error)

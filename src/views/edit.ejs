@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Editar <%=product[0].nombre%></h1>
+  <form action="/edit/<%=product[0].id%>" method="POST">
+    <div>
+      <label for="">Nombre</label>
+      <input type="text" name="nombre" id="nombre" value="<%= product[0].nombre%>">
+    </div>
+    <div>
+      <label for="">Precio</label>
+      <input type="text" name="precio" id="precio" value="<%= product[0].precio%>">
+    </div>
+    <div>
+      <label for="">Stock</label>
+      <input type="text" name="stock" id="stock" value="<%= product[0].stock%>">
+    </div>
+    <div>
+      <label for="">Descripción</label>
+      <textarea name="descripcion" id="descripcion"><%= product[0].descripcion%></textarea>
+    </div>
+    <div>
+      <button type="submit">OK</button>
+    </div>
+  </form>
+</body>
+</html>

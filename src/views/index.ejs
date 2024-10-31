@@ -28,8 +28,11 @@
             <td><%= data[i].precio%></td>
             <td><%= data[i].stock%></td>
             <td>
-              <button>Editar</button>
-              <button>Eliminar</button>
+              <a href="/edit/<%=data[i].id%>">Editar</a>
+              
+              <form action="/delete/<%=data[i].id%>" method="post">
+                <button>Eliminar</button>
+              </form>
             </td>
           </tr>
         <% } %>
